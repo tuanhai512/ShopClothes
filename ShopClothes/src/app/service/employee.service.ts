@@ -10,14 +10,16 @@ export class EmployeeService {
 
   addEmpUrl: string;
   getEmpUrl: string;
+  updateEmpUrl: string;
 
   constructor(private http :HttpClient) {
     this.addEmpUrl = 'https://localhost:44377/api/Categories';
     this.getEmpUrl = 'https://localhost:44377/api/Categories';
+    this.updateEmpUrl = '"https://localhost:44377/api/Categories"';
    }
 
-   addEmployee(emp : any){
-     return this.http.post<any>(this.addEmpUrl,emp).pipe(map((res:any)=>{
+   addEmployee(emp : Employee){
+     return this.http.post<Employee>(this.addEmpUrl,emp).pipe(map((res:any)=>{
       return res;
      }));
    }
@@ -26,4 +28,8 @@ export class EmployeeService {
       return this.http.get<{name: Employee, id: Employee}>(this.getEmpUrl).pipe(map((res:any)=>{
         return res;
        }));}
+       updateEmployee(emp: Employee){
+        return this.http.put<Employee>(this.getEmpUrl, emp).pipe(map((res:any)=>{
+          return res;
+         }));}
 }

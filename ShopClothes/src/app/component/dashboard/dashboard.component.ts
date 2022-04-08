@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Employee } from './../../model/employee';
 import { EmployeeService } from './../../service/employee.service';
 import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -62,5 +63,22 @@ export class DashboardComponent implements OnInit {
         console.log('error while fetching data');
       }
     );
+  }
+  editEmployee(emp : Employee){
+    this.empDetail.controls['id'].setValue(emp.ID);
+    this.empDetail.controls['name'].setValue(emp.NAME);
+  }
+  updateEmployee(){
+    this.empObj.ID = this.empDetail.value.id;
+    this.empObj.NAME = this.empDetail.value.name;
+   
+    this.empService.updateEmployee(this.empObj).subscribe(
+      (res) => {
+        console.log(res);
+        this.getAllEmployee();
+      },err => {
+        console.log(err);
+      }
+    )
   }
 }

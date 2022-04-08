@@ -35,9 +35,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let empList of empList">
-        <td>{{ empList.ID }} </td>
-        <td>{{ empList.NAME }}</td>
+      <tr *ngFor="let employee of empList">
+        <td>{{ employee.ID }} </td>
+        <td>{{ employee.NAME }}</td>
 
         <td>
           <button
@@ -45,6 +45,7 @@
             class="btn btn-outline-primary me-2"
             data-bs-toggle="modal"
             data-bs-target="#editEmployee"
+            (click)="editEmployee(employee)"
           >
             Edit
           </button>
@@ -99,8 +100,9 @@
                 data-bs-dismiss="modal"
                 (click)="addEmployee()"
               >
-                Add employee
+                Add
               </button>
+            
             </div>
           </form>
         </div>
@@ -109,4 +111,59 @@
   </div>
 
   <!-- Edit employee modal -->
+  <div
+  class="modal fade"
+  id="editEmployee"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Edit Employee</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="empDetail">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name </label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              id="name"
+              aria-describedby="emailHelp"
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            (click)="updateEmployee()"
+            >
+              Update
+            </button>
+          
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
