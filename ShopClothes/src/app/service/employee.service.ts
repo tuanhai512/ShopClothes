@@ -11,11 +11,13 @@ export class EmployeeService {
   addEmpUrl: string;
   getEmpUrl: string;
   updateEmpUrl: string;
+  deleteEmpUrl:string;
 
   constructor(private http :HttpClient) {
     this.addEmpUrl = 'https://localhost:44377/api/Categories';
     this.getEmpUrl = 'https://localhost:44377/api/Categories';
-    this.updateEmpUrl = '"https://localhost:44377/api/Categories"';
+    this.updateEmpUrl = 'https://localhost:44377/api/Categories';
+    this.deleteEmpUrl = 'https://localhost:44377/api/Categories';
    }
 
    addEmployee(emp : Employee){
@@ -32,4 +34,7 @@ export class EmployeeService {
         return this.http.put<Employee>(this.getEmpUrl, emp).pipe(map((res:any)=>{
           return res;
          }));}
+    deleteEmployee(emp: Employee){
+      return this.http.delete<Employee>(this.deleteEmpUrl+'/'+emp.ID);
+    }
 }

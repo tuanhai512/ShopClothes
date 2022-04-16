@@ -49,7 +49,7 @@
           >
             Edit
           </button>
-          <button type="button" class="btn btn-outline-danger">Delete</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteEmployee(employee)">Delete</button>
         </td>
       </tr>
     </tbody>
@@ -154,7 +154,7 @@
               type="button"
               class="btn btn-primary"
               data-bs-dismiss="modal"
-            (click)="updateEmployee()"
+              (click)="updateEmployee()"
             >
               Update
             </button>

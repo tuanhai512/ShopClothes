@@ -4,6 +4,7 @@ import { Employee } from './../../model/employee';
 import { EmployeeService } from './../../service/employee.service';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,12 +20,13 @@ export class DashboardComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private empService: EmployeeService,
-    private http :HttpClient
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
     this.getAllEmployee();
     this.empDetail = this.formBuilder.group({
+      id:[''],
       name: [''],
     });
   }
@@ -64,21 +66,37 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
-  editEmployee(emp : Employee){
+  editEmployee(emp: Employee) {
     this.empDetail.controls['id'].setValue(emp.ID);
     this.empDetail.controls['name'].setValue(emp.NAME);
+    console.log(this.empDetail.controls['name'].setValue(emp.NAME))
   }
-  updateEmployee(){
-    this.empObj.ID = this.empDetail.value.id;
+  updateEmployee() {
+  
     this.empObj.NAME = this.empDetail.value.name;
+    this.empObj.ID = this.empDetail.value.id;
    
+    console.log(this.empDetail.value.name)
+    console.log(this.empDetail.value.id)
     this.empService.updateEmployee(this.empObj).subscribe(
       (res) => {
         console.log(res);
         this.getAllEmployee();
-      },err => {
+      },
+      (err) => {
         console.log(err);
       }
-    )
+    );
+  }
+  deleteEmployee(emp : Employee) {
+
+    this.empService.deleteEmployee(emp).subscribe(res=>{
+      console.log(res);
+      alert('Employee deleted successfully');
+      this.getAllEmployee();
+    },err => {
+      console.log(err);
+    });
+
   }
 }
