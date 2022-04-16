@@ -27,7 +27,7 @@ export class EmployeeService {
    }
 
      getAllEmployee(){
-      return this.http.get<{name: Employee, id: Employee}>(this.getEmpUrl).pipe(map((res:any)=>{
+      return this.http.get<Employee>(this.getEmpUrl).pipe(map((res:any)=>{
         return res;
        }));}
        updateEmployee(emp: Employee){

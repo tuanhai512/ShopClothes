@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
   empDetail!: FormGroup;
-
+  empCreate!: FormGroup;
   empObj: Employee = new Employee();
   empList: Employee[] = [];
 
@@ -29,17 +29,20 @@ export class DashboardComponent implements OnInit {
       id:[''],
       name: [''],
     });
+    this.empCreate = this.formBuilder.group({
+      name: ['']
+    })
   }
 
   addEmployee() {
-    console.log(this.empDetail);
-    this.empObj.ID = this.empDetail.value.id;
-    this.empObj.NAME = this.empDetail.value.name;
+    console.log(this.empCreate);
+    this.empObj.ID = this.empCreate.value.id;
+    this.empObj.NAME = this.empCreate.value.name;
 
     this.empService.addEmployee(this.empObj).subscribe(
       (res) => {
         console.log(res);
-        this.empDetail.reset();
+        this.empCreate.reset();
         this.getAllEmployee();
       },
       (err) => {
