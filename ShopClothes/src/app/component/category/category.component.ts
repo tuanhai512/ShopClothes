@@ -1,30 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { Employee } from './../../model/employee';
-import { EmployeeService } from './../../service/employee.service';
+import { Categories } from '../../model/category';
+
 import { HttpClient } from '@angular/common/http';
-import { DatePipe } from '@angular/common';
-import { Observable } from 'rxjs';
+import { CategoriesService } from 'src/app/service/category.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.css'],
 })
-export class DashboardComponent implements OnInit {
+export class CategoryComponent implements OnInit {
   empDetail!: FormGroup;
   empCreate!: FormGroup;
-  empObj: Employee = new Employee();
-  empList: Employee[] = [];
+  empObj: Categories = new Categories();
+  empList: Categories[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
-    private empService: EmployeeService,
+    private empService: CategoriesService,
     private http: HttpClient
   ) {}
 
   ngOnInit(): void {
-    this.getAllEmployee();
+    this.getAllCategory();
     this.empDetail = this.formBuilder.group({
       id:[''],
       name: [''],
@@ -34,32 +33,24 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  addEmployee() {
+  addCategory() {
     console.log(this.empCreate);
     this.empObj.ID = this.empCreate.value.id;
     this.empObj.NAME = this.empCreate.value.name;
 
-    this.empService.addEmployee(this.empObj).subscribe(
+    this.empService.addCategory(this.empObj).subscribe(
       (res) => {
         console.log(res);
         this.empCreate.reset();
-        this.getAllEmployee();
+        this.getAllCategory();
       },
       (err) => {
         console.log(err);
       }
     );
   }
-  // getAllEmployee(){
-  //   this.http.get<any>('https://localhost:44377/api/Categories').subscribe((data)=>
-  //   {
-  //     this.empList = data;
-  //     console.log(this.empList);
-  //   })
-  // }
-
-  getAllEmployee() {
-    this.empService.getAllEmployee().subscribe(
+  getAllCategory() {
+    this.empService.getAllCategory().subscribe(
       (res) => {
         this.empList = res;
         console.log(res);
@@ -69,34 +60,34 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
-  editEmployee(emp: Employee) {
+  editCategory(emp: Categories) {
     this.empDetail.controls['id'].setValue(emp.ID);
     this.empDetail.controls['name'].setValue(emp.NAME);
     console.log(this.empDetail.controls['name'].setValue(emp.NAME))
   }
-  updateEmployee() {
+  updateCategory() {
   
     this.empObj.NAME = this.empDetail.value.name;
     this.empObj.ID = this.empDetail.value.id;
    
     console.log(this.empDetail.value.name)
     console.log(this.empDetail.value.id)
-    this.empService.updateEmployee(this.empObj).subscribe(
+    this.empService.updateCategory(this.empObj).subscribe(
       (res) => {
         console.log(res);
-        this.getAllEmployee();
+        this.getAllCategory();
       },
       (err) => {
         console.log(err);
       }
     );
   }
-  deleteEmployee(emp : Employee) {
+  deleteCategory(emp : Categories) {
 
-    this.empService.deleteEmployee(emp).subscribe(res=>{
+    this.empService.deleteCategory(emp).subscribe(res=>{
       console.log(res);
-      alert('Employee deleted successfully');
-      this.getAllEmployee();
+      alert('Xóa thành công ');
+      this.getAllCategory();
     },err => {
       console.log(err);
     });

@@ -1,0 +1,5 @@
+<div class="row">
+  <div class="col-md-2" *ngFor="let product of empList; let i = index">
+    <app-product-item [empObj]="product" [index]="i"></app-product-item>
+  </div>
+</div>

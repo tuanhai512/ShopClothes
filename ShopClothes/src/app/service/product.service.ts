@@ -1,12 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http'; 
-import { Employee } from '../model/employee';
+import { Product } from '../model/product';
 import { map } from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root'
 })
-export class EmployeeService {
+export class ProductService {
 
   addEmpUrl: string;
   getEmpUrl: string;
@@ -20,21 +19,21 @@ export class EmployeeService {
     this.deleteEmpUrl = 'https://localhost:44377/api/Categories';
    }
 
-   addEmployee(emp : Employee){
-     return this.http.post<Employee>(this.addEmpUrl,emp).pipe(map((res:any)=>{
+   addCategory(emp : Product){
+     return this.http.post<Product>(this.addEmpUrl,emp).pipe(map((res:any)=>{
       return res;
      }));
    }
 
-     getAllEmployee(){
-      return this.http.get<Employee>(this.getEmpUrl).pipe(map((res:any)=>{
+     getAllCategory(){
+      return this.http.get<Product>(this.getEmpUrl).pipe(map((res:any)=>{
         return res;
        }));}
-       updateEmployee(emp: Employee){
-        return this.http.put<Employee>(this.getEmpUrl, emp).pipe(map((res:any)=>{
+       updateCategory(emp: Product){
+        return this.http.put<Product>(this.getEmpUrl, emp).pipe(map((res:any)=>{
           return res;
          }));}
-    deleteEmployee(emp: Employee){
-      return this.http.delete<Employee>(this.deleteEmpUrl+'/'+emp.ID);
+    deleteCategory(emp: Product){
+      return this.http.delete<Product>(this.deleteEmpUrl+'/'+emp.ID);
     }
 }
