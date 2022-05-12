@@ -3,37 +3,44 @@ import { Injectable } from '@angular/core';
 import { Product } from '../model/product';
 import { map } from 'rxjs/operators';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
   addEmpUrl: string;
   getEmpUrl: string;
   updateEmpUrl: string;
-  deleteEmpUrl:string;
+  deleteEmpUrl: string;
 
-  constructor(private http :HttpClient) {
-    this.addEmpUrl = 'https://localhost:44377/api/Categories';
-    this.getEmpUrl = 'https://localhost:44377/api/Categories';
-    this.updateEmpUrl = 'https://localhost:44377/api/Categories';
-    this.deleteEmpUrl = 'https://localhost:44377/api/Categories';
-   }
+  constructor(private http: HttpClient) {
+    this.addEmpUrl = 'https://localhost:44377/api/Products';
+    this.getEmpUrl = 'https://localhost:44377/api/Products';
+    this.updateEmpUrl = 'https://localhost:44377/api/Products';
+    this.deleteEmpUrl = 'https://localhost:44377/api/Products';
+  }
 
-   addCategory(emp : Product){
-     return this.http.post<Product>(this.addEmpUrl,emp).pipe(map((res:any)=>{
-      return res;
-     }));
-   }
-
-     getAllCategory(){
-      return this.http.get<Product>(this.getEmpUrl).pipe(map((res:any)=>{
+  addProduct(emp: Product) {
+    return this.http.post<Product>(this.addEmpUrl, emp).pipe(
+      map((res: any) => {
         return res;
-       }));}
-       updateCategory(emp: Product){
-        return this.http.put<Product>(this.getEmpUrl, emp).pipe(map((res:any)=>{
-          return res;
-         }));}
-    deleteCategory(emp: Product){
-      return this.http.delete<Product>(this.deleteEmpUrl+'/'+emp.ID);
-    }
+      })
+    );
+  }
+
+  getAllProduct() {
+    return this.http.get<Product>(this.getEmpUrl).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
+  updateProduct(emp: Product) {
+    return this.http.put<Product>(this.getEmpUrl, emp).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
+  deleteProduct(emp: Product) {
+    return this.http.delete<Product>(this.deleteEmpUrl + '/' + emp.ID);
+  }
 }
