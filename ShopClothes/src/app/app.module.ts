@@ -5,20 +5,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './component/category/category.component';
-import { HomeComponent } from './component/home/home.component';
+
 import { Routes, RouterModule } from '@angular/router';
 import { ProductComponent } from './component/product/product.component';
 import { UploadComponent } from './component/upload/upload.component';
-import { FooterComponent } from './component/footer/footer.component';
-import { HeaderComponent } from './component/header/header.component';
-import { CenterComponent } from './component/center/center.component';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MenuComponent } from './component/menu/menu.component';
+
+import { CenterComponent } from './component/home/center/center.component';
+import { HomeComponent } from './component/home/home.component';
+import { HeaderComponent } from './component/home/header/header.component';
+import { FooterComponent } from './component/home/footer/footer.component';
+
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: MenuComponent,
   },
   {
     path: 'admin/product',
@@ -28,26 +32,24 @@ const appRoutes: Routes = [
     path: 'admin',
     component: CategoryComponent,
   },
-  {
-    path:'menu',
-    component: MenuComponent,
-  }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoryComponent,
-    HomeComponent,
     ProductComponent,
     UploadComponent,
-    FooterComponent,
-    HeaderComponent,
-    CenterComponent,
     MenuComponent,
+    HeaderComponent,
+    FooterComponent,
+    CenterComponent,
+    HomeComponent,
+ 
   ],
   imports: [
-    BrowserModule,
+
+  BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,

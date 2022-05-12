@@ -935,7 +935,7 @@ object {
 @media only screen and (max-width: 767px) {
   .modal-dialog {
     width: 100%;
-    max-width: 100%;
+   max-width: none;
     padding: 35px 0;
   }
 }
