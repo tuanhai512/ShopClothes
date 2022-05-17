@@ -8,7 +8,7 @@ import { CategoriesService } from 'src/app/service/category.service';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css'],
+  styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit {
   empDetail!: FormGroup;
@@ -25,12 +25,12 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCategory();
     this.empDetail = this.formBuilder.group({
-      id:[''],
+      id: [''],
       name: [''],
     });
     this.empCreate = this.formBuilder.group({
-      name: ['']
-    })
+      name: [''],
+    });
   }
 
   addCategory() {
@@ -63,15 +63,14 @@ export class CategoryComponent implements OnInit {
   editCategory(emp: Categories) {
     this.empDetail.controls['id'].setValue(emp.ID);
     this.empDetail.controls['name'].setValue(emp.NAME);
-    console.log(this.empDetail.controls['name'].setValue(emp.NAME))
+    console.log(this.empDetail.controls['name'].setValue(emp.NAME));
   }
   updateCategory() {
-  
     this.empObj.NAME = this.empDetail.value.name;
     this.empObj.ID = this.empDetail.value.id;
-   
-    console.log(this.empDetail.value.name)
-    console.log(this.empDetail.value.id)
+
+    console.log(this.empDetail.value.name);
+    console.log(this.empDetail.value.id);
     this.empService.updateCategory(this.empObj).subscribe(
       (res) => {
         console.log(res);
@@ -82,15 +81,16 @@ export class CategoryComponent implements OnInit {
       }
     );
   }
-  deleteCategory(emp : Categories) {
-
-    this.empService.deleteCategory(emp).subscribe(res=>{
-      console.log(res);
-      alert('Xóa thành công ');
-      this.getAllCategory();
-    },err => {
-      console.log(err);
-    });
-
+  deleteCategory(emp: Categories) {
+    this.empService.deleteCategory(emp).subscribe(
+      (res) => {
+        console.log(res);
+        alert('Xóa thành công ');
+        this.getAllCategory();
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

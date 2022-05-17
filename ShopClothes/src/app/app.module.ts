@@ -15,24 +15,12 @@ import { MenuComponent } from './component/menu/menu.component';
 
 import { CenterComponent } from './component/home/center/center.component';
 import { HomeComponent } from './component/home/home.component';
-import { HeaderComponent } from './component/home/header/header.component';
+
+import { HeaderHomeComponent } from './component/home/header/header.component';
 import { FooterComponent } from './component/home/footer/footer.component';
+import { HeaderComponent } from './component/header/header.component';
 
 
-const appRoutes: Routes = [
-  {
-    path: '',
-    component: MenuComponent,
-  },
-  {
-    path: 'admin/product',
-    component: ProductComponent,
-  },
-  {
-    path: 'admin',
-    component: CategoryComponent,
-  },
-];
 
 @NgModule({
   declarations: [
@@ -45,15 +33,14 @@ const appRoutes: Routes = [
     FooterComponent,
     CenterComponent,
     HomeComponent,
- 
+    HeaderHomeComponent,
   ],
   imports: [
-
-  BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+   
     NgbModule,
   ],
   providers: [],
