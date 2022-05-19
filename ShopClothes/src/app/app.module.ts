@@ -9,7 +9,6 @@ import { CategoryComponent } from './component/category/category.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductComponent } from './component/product/product.component';
 import { UploadComponent } from './component/upload/upload.component';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MenuComponent } from './component/menu/menu.component';
 
@@ -17,6 +16,7 @@ import { CenterComponent } from './component/home/center/center.component';
 import { HomeComponent } from './component/home/home.component';
 import { HeaderComponent } from './component/home/header/header.component';
 import { FooterComponent } from './component/home/footer/footer.component';
+import { CartComponent } from './component/cart/cart.component';
 
 
 const appRoutes: Routes = [
@@ -37,6 +37,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    // ProductDetailsComponent,
     CategoryComponent,
     ProductComponent,
     UploadComponent,
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     FooterComponent,
     CenterComponent,
     HomeComponent,
+    CartComponent,
  
   ],
   imports: [
