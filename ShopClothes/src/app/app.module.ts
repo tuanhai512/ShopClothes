@@ -14,25 +14,16 @@ import { MenuComponent } from './component/menu/menu.component';
 
 import { CenterComponent } from './component/home/center/center.component';
 import { HomeComponent } from './component/home/home.component';
-import { HeaderComponent } from './component/home/header/header.component';
+
+import { HeaderHomeComponent } from './component/home/header/header.component';
 import { FooterComponent } from './component/home/footer/footer.component';
 import { CartComponent } from './component/cart/cart.component';
+import { HeaderComponent } from './component/header/header.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+import { LayoutComponent } from './component/login/layout/layout.component';
 
 
-const appRoutes: Routes = [
-  {
-    path: '',
-    component: MenuComponent,
-  },
-  {
-    path: 'admin/product',
-    component: ProductComponent,
-  },
-  {
-    path: 'admin',
-    component: CategoryComponent,
-  },
-];
 
 @NgModule({
   declarations: [
@@ -48,14 +39,17 @@ const appRoutes: Routes = [
     HomeComponent,
     CartComponent,
  
+    HeaderHomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    LayoutComponent,
   ],
   imports: [
-
-  BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+   
     NgbModule,
   ],
   providers: [],
