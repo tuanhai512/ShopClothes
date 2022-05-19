@@ -2,8 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryComponent } from './component/category/category.component';
 import { HomeComponent } from './component/home/home.component';
+import { LoginComponent } from './component/login/login.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { ProductComponent } from './component/product/product.component';
+
+const accountModule = () =>
+  import('./component/login/user-routing.module').then(
+    (x) => x.UserRoutingModule
+  );
 
 const routes: Routes = [
   {
@@ -22,6 +28,7 @@ const routes: Routes = [
     path: 'menu',
     component: MenuComponent,
   },
+  { path: 'login', loadChildren: accountModule },
 ];
 
 @NgModule({

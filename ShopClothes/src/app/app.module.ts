@@ -19,6 +19,9 @@ import { HomeComponent } from './component/home/home.component';
 import { HeaderHomeComponent } from './component/home/header/header.component';
 import { FooterComponent } from './component/home/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+import { LayoutComponent } from './component/login/layout/layout.component';
 
 
 
@@ -34,6 +37,9 @@ import { HeaderComponent } from './component/header/header.component';
     CenterComponent,
     HomeComponent,
     HeaderHomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
