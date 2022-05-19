@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -42,5 +43,9 @@ export class ProductService {
   }
   deleteProduct(emp: Product) {
     return this.http.delete<Product>(this.deleteEmpUrl + '/' + emp.ID);
+  }
+  find(emp: Product){
+    return this.http.get<Product>(this.getEmpUrl+'/'+emp.ID).pipe(
+    )
   }
 }

@@ -35,6 +35,7 @@ export class ProductComponent implements OnInit {
       name: [''],
       price: [''],
       img: [''],
+      quantity: [''],
       oriPrice: [''],
     });
     this.empCreate = this.formBuilder.group({
@@ -44,6 +45,7 @@ export class ProductComponent implements OnInit {
       company: [''],
       sex: [''],
       quantity: [''],
+      oriPrice: [''],
     });
   }
 
@@ -54,6 +56,8 @@ export class ProductComponent implements OnInit {
     this.empObj.IMAGE = this.response?.dbPath;
     this.empObj.COMPANY = this.empCreate.value.company;
     this.empObj.SEX = this.empCreate.value.sex;
+    this.empObj.PRICE = this.empCreate.value.price;
+    this.empObj.ORI_PRICE = this.empCreate.value.oriPrice;
     this.empObj.QUANTITY = this.empCreate.value.quantity;
     this.empService.addProduct(this.empObj).subscribe(
       (res) => {

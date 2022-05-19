@@ -1,13 +1,10 @@
-<h2>Product Details</h2>
 
-<div *ngIf="product">
-  <h3>{{ product.name }}</h3>
-  <h4>{{ product.price | currency }}</h4>
-  <p>{{ product.description }}</p>
 
-  <button (click)="addToCart(product)">Buy</button>
+<div>
+  <h3>{{ product.NAME }}</h3>
+  <h4>{{ product.PRICE  }}</h4>
 </div>
-<section class="single-product">
+<section class="single-product"*ngIf="product">
     <div class="container">
       <div class="row">
         <div class="col-md-5">
@@ -84,13 +81,13 @@
   
         <div class="col-md-7">
           <div class="single-product-details mt-5 mt-lg-0">
-            <h2>Eclipse Crossbody</h2>
+            <h2>Eclipse Crossbody({{ product.NAME }})</h2>
             <div class="sku_wrapper mb-4">
               ID: <span class="text-muted">AB1563456789 </span>
             </div>
             <hr />
   
-            <h3 class="product-price">$300 <del>$119.90</del></h3>
+            <h3 class="product-price">$300 <del>${{ product.PRICE  }}</del></h3>
   
             <p class="product-description my-4">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum
@@ -113,7 +110,7 @@
                   size="4"
                 />
                 <a
-                  href="#"
+                (click)="addToCart(product)"
                   class="btn btn-main btn-small"
                   style="border: solid 2px orange"
                   >Add to cart</a

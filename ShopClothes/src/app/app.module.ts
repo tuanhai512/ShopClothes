@@ -22,13 +22,13 @@ import { HeaderComponent } from './component/header/header.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { LayoutComponent } from './component/login/layout/layout.component';
+import { DetailComponent } from './component/home/center/product-detail/product-detail.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    // ProductDetailsComponent,
     CategoryComponent,
     ProductComponent,
     UploadComponent,
@@ -38,7 +38,6 @@ import { LayoutComponent } from './component/login/layout/layout.component';
     CenterComponent,
     HomeComponent,
     CartComponent,
- 
     HeaderHomeComponent,
     LoginComponent,
     RegisterComponent,
